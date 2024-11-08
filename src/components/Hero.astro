@@ -1,0 +1,247 @@
+---
+---
+
+<section class="hero">
+    <div class="overlay"></div>
+    <div class="gradient-bg"></div>
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="main-heading">
+                Fast Track Driving Test Booking
+                <span class="subtitle">Skip the Queue - Book Your Test in Nottingham Today!</span>
+            </h1>
+            
+            <div class="features">
+                <div class="feature">
+                    <span class="feature-icon">⚡</span>
+                    <span class="feature-text">Fast-Track Booking</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">🔍</span>
+                    <span class="feature-text">24/7 Cancellation Monitoring</span>
+                </div>
+                <div class="feature">
+                    <span class="feature-icon">✨</span>
+                    <span class="feature-text">Priority Service</span>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <a href="#booking" class="primary-button" id="bookNowBtn">
+                    <span class="button-content">
+                        <span class="button-icon">📅</span>
+                        <span class="button-text">Book Today</span>
+                    </span>
+                    <div class="button-glow"></div>
+                </a>
+                <p class="cta-subtext">Limited Slots Available!</p>
+            </div>
+        </div>
+    </div>
+    <div class="animated-bg">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        import('canvas-confetti').then((confetti) => {
+            const bookNowBtn = document.getElementById('bookNowBtn');
+            
+            if (bookNowBtn) {
+                bookNowBtn.addEventListener('mouseenter', () => {
+                    const colors = ['#4CAF50', '#FFD700', '#ffffff'];
+                    const end = Date.now() + 200;
+
+                    const frame = () => {
+                        confetti.default({
+                            particleCount: 3,
+                            angle: 60,
+                            spread: 55,
+                            origin: { x: 0 },
+                            colors: colors
+                        });
+                        confetti.default({
+                            particleCount: 3,
+                            angle: 120,
+                            spread: 55,
+                            origin: { x: 1 },
+                            colors: colors
+                        });
+
+                        if (Date.now() < end) {
+                            requestAnimationFrame(frame);
+                        }
+                    };
+
+                    frame();
+                });
+            }
+        });
+    });
+</script>
+
+<style>
+    .hero {
+        position: relative;
+        background: #000;
+        color: white;
+        padding: 8rem 0;
+        text-align: center;
+        overflow: hidden;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, #000, #111);
+        z-index: 1;
+    }
+    .gradient-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.1) 0%, rgba(76,175,80,0.05) 50%, transparent 100%);
+        z-index: 2;
+        animation: pulse 4s ease-in-out infinite;
+    }
+    .container {
+        position: relative;
+        z-index: 3;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    .hero-content {
+        animation: fadeIn 1s ease;
+    }
+    .main-heading {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        color: #FFD700;
+        text-shadow: 0 0 30px rgba(255,215,0,0.5);
+        margin-bottom: 3rem;
+        line-height: 1.2;
+    }
+    .main-heading .subtitle {
+        display: block;
+        font-size: clamp(1.2rem, 3vw, 1.8rem);
+        color: #4CAF50;
+        margin-top: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        text-shadow: 0 0 20px rgba(76,175,80,0.5);
+    }
+    .features {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 3rem;
+        flex-wrap: wrap;
+    }
+    .feature {
+        background: rgba(255,215,0,0.1);
+        padding: 1rem 2rem;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        border: 1px solid rgba(255,215,0,0.3);
+        transition: all 0.3s ease;
+    }
+    .feature:hover {
+        transform: translateY(-2px);
+        background: rgba(255,215,0,0.15);
+        border-color: #4CAF50;
+    }
+    .feature-icon {
+        font-size: 1.5rem;
+    }
+    .feature-text {
+        color: #fff;
+        font-weight: 500;
+    }
+    .cta-section {
+        margin-top: 2rem;
+    }
+    .primary-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        background: linear-gradient(45deg, #4CAF50, #45a049);
+        color: white;
+        text-decoration: none;
+        padding: 1.2rem 2.5rem;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255,215,0,0.3);
+        position: relative;
+        overflow: hidden;
+    }
+    .button-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .button-glow {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255,215,0,0.3) 0%, transparent 70%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    .primary-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 20px rgba(76,175,80,0.4);
+    }
+    .primary-button:hover .button-glow {
+        opacity: 1;
+    }
+    .cta-subtext {
+        margin-top: 1rem;
+        color: #FFD700;
+        font-size: 1.1rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.7; }
+        100% { opacity: 1; }
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+        .hero {
+            padding: 6rem 0;
+        }
+        .features {
+            flex-direction: column;
+            align-items: center;
+        }
+        .feature {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+</style>

@@ -1,0 +1,158 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+
+import Footer from '../components/Footer.astro';
+
+const schemaData = {
+	"@context": "https://schema.org",
+	"@type": "LocalBusiness",
+	"name": "Fast Track Driving Test Booking Nottingham",
+	"description": "Book your driving test faster in Nottingham. DVLA approved fast track booking service for car practical tests. Same day availability, intensive courses, and cancellation monitoring.",
+	"url": "https://your-domain.com",
+	"priceRange": "££",
+	"address": {
+		"@type": "PostalAddress",
+		"addressLocality": "Nottingham",
+		"addressRegion": "Nottinghamshire",
+		"addressCountry": "UK"
+	},
+	"geo": {
+		"@type": "GeoCoordinates",
+		"latitude": "52.9548",
+		"longitude": "-1.1581"
+	},
+	"areaServed": ["Nottingham", "Colwick", "Chilwell", "Beeston", "West Bridgford"],
+	"aggregateRating": {
+		"@type": "AggregateRating",
+		"ratingValue": "4.9",
+		"reviewCount": "124"
+	},
+	"openingHoursSpecification": {
+		"@type": "OpeningHoursSpecification",
+		"dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+		"opens": "09:00",
+		"closes": "17:00"
+	},
+	"service": [
+		{
+			"@type": "Service",
+			"name": "Fast Track Driving Test Booking",
+			"description": "Priority booking service for DVLA driving tests in Nottingham",
+			"provider": {
+				"@type": "LocalBusiness",
+				"name": "Fast Track Driving Test Booking Nottingham"
+			},
+			"serviceType": "Driving Test Booking",
+			"price": "120",
+			"priceCurrency": "GBP"
+		},
+		{
+			"@type": "Service",
+			"name": "Intensive Course Driving Test Booking",
+			"description": "Urgent test dates for intensive driving courses",
+			"serviceType": "Fast Track Booking"
+		},
+		{
+			"@type": "Service",
+			"name": "Cancellation Driving Test Booking",
+			"description": "Real-time monitoring for driving test cancellations",
+			"serviceType": "Test Booking"
+		}
+	]
+};
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Primary Meta Tags -->
+		<title>{title}</title>
+		<meta name="title" content="Fast Track Driving Test Booking Nottingham | Book Your Test Today" />
+		<meta name="description" content="Book your driving test faster in Nottingham. DVLA approved fast track booking service for car practical tests. Same day availability, intensive courses, and cancellation monitoring. Book your test today!" />
+		
+		<!-- Keywords -->
+		<meta name="keywords" content="book driving test, book car test, book practical test, dvla fast track driving test, fast track car test, fast track driving test booking, fast track driving test price, fast track practical driving test, intensive course driving test, book my driving test dvla, book my practical driving test, booking a cancellation driving test, driving test Nottingham, Colwick test centre, Chilwell test centre" />
+		
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="https://your-domain.com" />
+		<meta property="og:title" content="Fast Track Driving Test Booking Nottingham | Same Day Availability" />
+		<meta property="og:description" content="Book your driving test faster in Nottingham. DVLA approved fast track booking service for car practical tests. Same day availability, intensive courses, and cancellation monitoring." />
+		<meta property="og:image" content="https://your-domain.com/images/nottingham-driving-test-centre.png" />
+		
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="https://your-domain.com" />
+		<meta property="twitter:title" content="Fast Track Driving Test Booking Nottingham | Book Today" />
+		<meta property="twitter:description" content="Book your driving test faster in Nottingham. DVLA approved fast track booking service for car practical tests. Same day availability, intensive courses, and cancellation monitoring." />
+		<meta property="twitter:image" content="https://your-domain.com/images/nottingham-driving-test-centre.png" />
+		
+		<!-- Additional SEO Meta Tags -->
+		<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+		<link rel="canonical" href="https://your-domain.com" />
+		<meta name="author" content="Fast Track Driving Test Booking Nottingham" />
+		<meta name="geo.region" content="GB-NGH" />
+		<meta name="geo.placename" content="Nottingham" />
+		<meta name="geo.position" content="52.9548;-1.1581" />
+		<meta name="ICBM" content="52.9548, -1.1581" />
+		
+		<!-- Google site verification -->
+		<meta name="google-site-verification" content="google5d7fd5f7cba32234" />
+		<meta name="google-site-verification" content="gR4qaBRScGybGdsVCBYUhX3XZBI4In-nYFCuv8uDSeQ" />
+		
+		<!-- Schema Markup -->
+		<script type="application/ld+json" set:html={JSON.stringify(schemaData)}></script>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-7BLHKX086T"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', 'G-7BLHKX086T');
+		</script>
+	</head>
+	<body>
+		<slot />
+		<Footer />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #f5f5f5;
+	}
+	body {
+		min-height: 100vh;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>

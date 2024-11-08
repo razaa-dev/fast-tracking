@@ -1,0 +1,235 @@
+---
+---
+
+<section class="location-info">
+    <div class="overlay"></div>
+    <div class="gradient-bg"></div>
+    <div class="container">
+        <h2>Driving Test Centers in Nottingham</h2>
+        <div class="test-centers">
+            <div class="test-center">
+                <div class="test-center-content">
+                    <div class="center-header">
+                        <h3>🗺️ Nottingham (Colwick) Test Centre</h3>
+                        <div class="availability">
+                            <span class="status">Available Now</span>
+                            <a href="#booking" class="book-button">
+                                <span class="button-content">
+                                    <span class="button-text">Book Today</span>
+                                    <span class="button-icon">→</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="address">Private Road Number 5, Industrial Estate, Colwick, Nottingham NG4 2JU</p>
+                    <ul class="features">
+                        <li>✓ Regular test slots available</li>
+                        <li>✓ Easy access from city center</li>
+                        <li>✓ Suitable for all skill levels</li>
+                    </ul>
+                    <div class="routes">
+                        <h4>Common Test Routes:</h4>
+                        <ul>
+                            <li>Colwick Industrial Estate</li>
+                            <li>Netherfield</li>
+                            <li>Carlton</li>
+                            <li>Sneinton</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="test-center">
+                <div class="test-center-content">
+                    <div class="center-header">
+                        <h3>🗺️ Nottingham (Chilwell) Test Centre</h3>
+                        <div class="availability">
+                            <span class="status">Available Now</span>
+                            <a href="#booking" class="book-button">
+                                <span class="button-content">
+                                    <span class="button-text">Book Today</span>
+                                    <span class="button-icon">→</span>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                    <p class="address">Unit 24, Business Park Eldon, Eldon Rd, Beeston, Nottingham NG9 6DZ</p>
+                    <ul class="features">
+                        <li>✓ Modern test center facilities</li>
+                        <li>✓ Accessible location</li>
+                        <li>✓ Various route options</li>
+                    </ul>
+                    <div class="routes">
+                        <h4>Common Test Routes:</h4>
+                        <ul>
+                            <li>Beeston town center</li>
+                            <li>University Boulevard</li>
+                            <li>Chilwell Retail Park</li>
+                            <li>Long Eaton</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .location-info {
+        position: relative;
+        background: #000;
+        color: white;
+        padding: 6rem 0;
+        overflow: hidden;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(45deg, #000, #111);
+        z-index: 1;
+    }
+    .gradient-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 50% 50%, rgba(255,215,0,0.1) 0%, rgba(76,175,80,0.05) 50%, transparent 100%);
+        z-index: 2;
+        animation: pulse 4s ease-in-out infinite;
+    }
+    .container {
+        position: relative;
+        z-index: 3;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        color: #FFD700;
+        text-shadow: 0 0 30px rgba(255,215,0,0.5);
+    }
+    .test-centers {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+    }
+    .test-center {
+        background: rgba(255,215,0,0.1);
+        border-radius: 15px;
+        transition: transform 0.3s ease;
+        border: 1px solid rgba(255,215,0,0.3);
+        overflow: hidden;
+    }
+    .test-center:hover {
+        transform: translateY(-5px);
+        border-color: #4CAF50;
+    }
+    .test-center-content {
+        padding: 2rem;
+    }
+    .center-header {
+        margin-bottom: 1.5rem;
+    }
+    h3 {
+        color: #FFD700;
+        margin-bottom: 1rem;
+        font-size: 1.5rem;
+        text-shadow: 0 0 20px rgba(255,215,0,0.3);
+    }
+    .availability {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(76,175,80,0.1);
+        padding: 0.75rem 1rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+    }
+    .status {
+        color: #4CAF50;
+        font-weight: bold;
+    }
+    .book-button {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(45deg, #4CAF50, #45a049);
+        color: white;
+        text-decoration: none;
+        padding: 0.5rem 1.2rem;
+        border-radius: 25px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255,215,0,0.3);
+    }
+    .button-content {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .button-icon {
+        transition: transform 0.3s ease;
+    }
+    .book-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(76,175,80,0.3);
+    }
+    .book-button:hover .button-icon {
+        transform: translateX(3px);
+    }
+    .address {
+        color: rgba(255,255,255,0.7);
+        margin-bottom: 1.5rem;
+        font-style: italic;
+    }
+    .features {
+        margin-bottom: 1.5rem;
+    }
+    .features li {
+        color: #4CAF50;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .routes {
+        background: rgba(255,255,255,0.05);
+        padding: 1.5rem;
+        border-radius: 8px;
+    }
+    h4 {
+        color: #FFD700;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .routes ul {
+        padding-left: 1.5rem;
+        color: rgba(255,255,255,0.7);
+    }
+    .routes li {
+        margin-bottom: 0.5rem;
+    }
+    @keyframes pulse {
+        0% { opacity: 1; }
+        50% { opacity: 0.7; }
+        100% { opacity: 1; }
+    }
+    @media (max-width: 768px) {
+        .test-centers {
+            grid-template-columns: 1fr;
+        }
+        .location-info {
+            padding: 4rem 0;
+        }
+    }
+</style>

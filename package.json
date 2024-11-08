@@ -1,0 +1,17 @@
+{
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "node api.js && astro dev",
+    "start": "node api.js && astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.15.3",
+    "canvas-confetti": "^1.9.2"
+  }
+}

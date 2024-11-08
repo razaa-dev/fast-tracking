@@ -1,0 +1,342 @@
+---
+const GOOGLE_FORM_URL = "https://forms.gle/GtfxmNGMF1NjQ5qN7";
+---
+
+<div id="booking" class="booking-card">
+    <h3>Book Your Driving Test</h3>
+    <p class="booking-info">Please provide your details below to secure your test date</p>
+    <div class="process-steps">
+        <div class="step">
+            <span class="step-number">1</span>
+            <span class="step-text">Enter Details</span>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+            <span class="step-number">2</span>
+            <span class="step-text">Secure Payment</span>
+        </div>
+        <div class="step-arrow">→</div>
+        <div class="step">
+            <span class="step-number">3</span>
+            <span class="step-text">Confirmation</span>
+        </div>
+    </div>
+    <form id="booking-form" class="booking-form">
+        <input type="text" id="fullName" placeholder="Full Name (as shown on your provisional license)" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="tel" id="phone" placeholder="Mobile Number" required>
+        <select id="testCenter" required>
+            <option value="">Select Test Center</option>
+            <option value="nottingham-colwick">Nottingham (Colwick)</option>
+            <option value="nottingham-chilwell">Nottingham (Chilwell)</option>
+        </select>
+        <button type="submit" id="submitBtn">
+            <span class="button-content">
+                <span class="button-icon">🔒</span>
+                <span class="button-text">Continue to Secure Payment</span>
+            </span>
+        </button>
+    </form>
+    <div id="success-message" class="success-message hidden">
+        <div class="success-content">
+            <div class="success-icon">🎉</div>
+            <h4>Congratulations!</h4>
+            <p>You're on your way to getting your UK driving licence!</p>
+            <p>Please complete your booking by proceeding to our secure payment page</p>
+            <a href={GOOGLE_FORM_URL} target="_blank" rel="noopener noreferrer" class="continue-button">
+                <span class="button-content">
+                    <span class="button-icon">🔒</span>
+                    <span class="button-text">Proceed to Secure Payment</span>
+                </span>
+            </a>
+        </div>
+    </div>
+    <div class="trust-indicators">
+        <p class="guarantee">Our team will contact you within 24 hours with your confirmed test date</p>
+        <div class="secure-badges">
+            <span class="secure-badge">
+                <span class="badge-icon">🔒</span>
+                <span>Secure SSL Payment</span>
+            </span>
+            <span class="secure-badge">
+                <span class="badge-icon">✓</span>
+                <span>DVSA Approved</span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<script>
+    import confetti from 'canvas-confetti';
+
+    const form = document.getElementById('booking-form');
+    const successMessage = document.getElementById('success-message');
+    
+    form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Store form data in sessionStorage for the Google Form
+        const formData = {
+            fullName: (document.getElementById('fullName') as HTMLInputElement).value,
+            email: (document.getElementById('email') as HTMLInputElement).value,
+            phone: (document.getElementById('phone') as HTMLInputElement).value,
+            testCenter: (document.getElementById('testCenter') as HTMLSelectElement).value
+        };
+        sessionStorage.setItem('bookingData', JSON.stringify(formData));
+        
+        // Hide form and show success message with animation
+        form.classList.add('hidden');
+        successMessage?.classList.remove('hidden');
+
+        // Trigger confetti
+        const end = Date.now() + 3000;
+        const colors = ['#4CAF50', '#45a049', '#FFD700', '#FF69B4'];
+
+        const frame = () => {
+            confetti({
+                particleCount: 4,
+                angle: 60,
+                spread: 55,
+                origin: { x: 0 },
+                colors: colors
+            });
+            confetti({
+                particleCount: 4,
+                angle: 120,
+                spread: 55,
+                origin: { x: 1 },
+                colors: colors
+            });
+
+            if (Date.now() < end) {
+                requestAnimationFrame(frame);
+            }
+        };
+
+        frame();
+    });
+</script>
+
+<style>
+    .booking-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    .process-steps {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1.5rem 0;
+        padding: 1.5rem;
+        background: #f8f8f8;
+        border-radius: 10px;
+    }
+    .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .step-number {
+        background: #4CAF50;
+        color: white;
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+        font-weight: bold;
+    }
+    .step-text {
+        font-size: 0.9rem;
+        color: #555;
+        font-weight: 500;
+    }
+    .step-arrow {
+        margin: 0 1.5rem;
+        color: #4CAF50;
+        font-weight: bold;
+    }
+    .booking-form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1.5rem 0;
+        transition: all 0.3s ease;
+    }
+    input, select {
+        padding: 1rem;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: #f8f8f8;
+    }
+    input:focus, select:focus {
+        outline: none;
+        border-color: #4CAF50;
+        background: white;
+        box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+    }
+    button, .continue-button {
+        background: #4CAF50;
+        color: white;
+        padding: 1rem;
+        border: none;
+        border-radius: 8px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(76, 175, 80, 0.2);
+        text-decoration: none;
+        text-align: center;
+        display: block;
+        margin-top: 1rem;
+    }
+    .button-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .button-icon {
+        font-size: 1.2rem;
+    }
+    button:hover, .continue-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(76, 175, 80, 0.3);
+        background: #45a049;
+    }
+    button:active, .continue-button:active {
+        transform: translateY(0);
+    }
+    h3 {
+        text-align: center;
+        margin-bottom: 0.75rem;
+        color: #23262d;
+        font-size: 1.75rem;
+        font-weight: 700;
+    }
+    .booking-info {
+        text-align: center;
+        color: #555;
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+    }
+    .trust-indicators {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #eee;
+    }
+    .guarantee {
+        text-align: center;
+        color: #333;
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+    }
+    .secure-badges {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-top: 1rem;
+    }
+    .secure-badge {
+        font-size: 0.9rem;
+        color: #666;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: #f8f8f8;
+        padding: 0.5rem 1rem;
+        border-radius: 50px;
+    }
+    .badge-icon {
+        color: #4CAF50;
+    }
+    .success-message {
+        text-align: center;
+        padding: 2rem;
+        background: #f8f8f8;
+        border-radius: 8px;
+        margin: 1.5rem 0;
+        animation: slideIn 0.5s ease forwards;
+    }
+    .success-content {
+        transform: scale(0.9);
+        opacity: 0;
+        animation: popIn 0.5s ease 0.2s forwards;
+    }
+    .success-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: bounce 1s ease infinite;
+    }
+    .success-message h4 {
+        color: #4CAF50;
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .success-message p {
+        margin-bottom: 1rem;
+        color: #333;
+    }
+    .success-message p:first-of-type {
+        font-size: 1.2rem;
+        font-weight: bold;
+    }
+    .hidden {
+        display: none;
+    }
+    @keyframes slideIn {
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+    @keyframes popIn {
+        from {
+            transform: scale(0.9);
+            opacity: 0;
+        }
+        to {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+    @keyframes bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+    @media (max-width: 480px) {
+        .booking-card {
+            padding: 1.5rem;
+        }
+        .process-steps {
+            padding: 1rem;
+        }
+        .step-arrow {
+            margin: 0 0.75rem;
+        }
+        .secure-badges {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+    }
+</style>

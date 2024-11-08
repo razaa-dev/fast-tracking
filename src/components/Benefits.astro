@@ -1,0 +1,193 @@
+---
+const GOOGLE_FORM_URL = "https://forms.gle/GtfxmNGMF1NjQ5qN7";
+
+const benefits = [
+    {
+        icon: "⚡",
+        title: "Fastest Booking Service",
+        description: "We search for earlier test dates on your behalf",
+        ctaIcon: "🎯",
+        ctaTitle: "BOOK FAST TRACK NOW!",
+        ctaText: "Get your test date in 24 hours"
+    },
+    {
+        icon: "🔍",
+        title: "Real-Time Cancellations",
+        description: "Access to test slots as they become available",
+        ctaIcon: "⚡",
+        ctaTitle: "SECURE YOUR SLOT NOW!",
+        ctaText: "Don't miss out on cancellations"
+    },
+    {
+        icon: "🎯",
+        title: "Priority Booking",
+        description: "We handle the entire booking process for you",
+        ctaIcon: "🔥",
+        ctaTitle: "SKIP THE QUEUE NOW!",
+        ctaText: "Priority booking available"
+    }
+];
+---
+
+<section id="benefits" class="benefits">
+    <div class="container">
+        <h2>Why Choose Our Fast Track Booking Service?</h2>
+        <div class="benefits-grid">
+            {benefits.map(benefit => (
+                <a href={GOOGLE_FORM_URL} class="benefit-square" target="_blank" rel="noopener noreferrer">
+                    <div class="square-content">
+                        <div class="default-view">
+                            <div class="content-wrapper">
+                                <div class="icon">{benefit.icon}</div>
+                                <div class="text-content">
+                                    <h3>{benefit.title}</h3>
+                                    <p>{benefit.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hover-view">
+                            <div class="content-wrapper">
+                                <div class="cta-icon">{benefit.ctaIcon}</div>
+                                <div class="cta-text">
+                                    <div class="cta-title">{benefit.ctaTitle}</div>
+                                    <div class="cta-description">{benefit.ctaText}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .benefits {
+        padding: 4rem 0;
+        background: white;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        color: #23262d;
+    }
+    .benefits-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 200px);
+        gap: 2rem;
+        justify-content: center;
+        padding: 1rem;
+    }
+    .benefit-square {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        cursor: pointer;
+        text-decoration: none;
+        perspective: 1000px;
+    }
+    .square-content {
+        position: absolute;
+        inset: 0;
+        background: #f5f5f5;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+    .content-wrapper {
+        padding: 1.5rem;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+    .text-content {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .default-view, .hover-view {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+    }
+    .hover-view {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    .icon {
+        font-size: 2.5rem;
+        margin-bottom: 0.5rem;
+        transition: transform 0.3s ease;
+    }
+    .cta-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        transform: scale(0.8);
+        transition: transform 0.3s ease;
+    }
+    .cta-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    .cta-title {
+        color: white;
+        font-weight: bold;
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+    .cta-description {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 0.9rem;
+        line-height: 1.4;
+    }
+    h3 {
+        color: #23262d;
+        font-size: 1.1rem;
+        transition: color 0.3s ease;
+        margin: 0;
+    }
+    p {
+        font-size: 0.85rem;
+        color: #666;
+        line-height: 1.4;
+        margin: 0;
+    }
+    .benefit-square:hover .square-content {
+        background: #4CAF50;
+        transform: translateY(-5px) rotateX(5deg);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+    .benefit-square:hover .default-view {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    .benefit-square:hover .hover-view {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .benefit-square:hover .cta-icon {
+        transform: scale(1);
+    }
+    @media (max-width: 768px) {
+        .benefits-grid {
+            grid-template-columns: repeat(1, 200px);
+        }
+    }
+</style>
